@@ -7,6 +7,10 @@ WHERE ShipperID = (
     WHERE ShipperName = 'Speedy Express'
 );
 
+/*
+* Return value for how many orders were shipped by speedy express is 54.
+*/
+
 
 -- Solution 2
 SELECT Employees.LastName, COUNT(Orders.EmployeeID) AS NumberSold
@@ -14,8 +18,12 @@ FROM Orders
 JOIN Employees
 ON Orders.EmployeeID = Employees.EmployeeID
 GROUP BY LastName
-ORDER BY NumberOrders DESC
+ORDER BY NumberSold DESC
 LIMIT 1;
+
+/*
+* Return value for the last name of the employee with the most orders is Peacock.
+*/
 
 -- Solution 3
 SELECT OrderDetails.ProductID, Orders.OrderID, COUNT(Orders.CustomerID) AS NumberOfOrders, Orders.CustomerID, Products.ProductName
@@ -32,3 +40,7 @@ WHERE CustomerID IN (
 GROUP BY CustomerID
 ORDER BY NumberOfOrders DESC
 LIMIT 1;
+
+/*
+* Return value for the product most ordered by people in Germany was Ikura.
+*/
